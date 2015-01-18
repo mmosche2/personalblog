@@ -8,17 +8,17 @@ common: &common
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: markmoschel
-  password:
+  username: <%= ENV['PG_DB_USER'] %>
+  password: <%= ENV['PG_DB_PASS'] %>
 
 development:
   <<: *common
-  database: personalblog_development
+  database: <%= ENV['PG_DB_NAME'] %>
   host: localhost
 
 staging:
   <<: *common
-  database: personalblog_staging
+  database: <%= ENV['PG_DB_NAME'] %>
 
 test: &test
   <<: *common
